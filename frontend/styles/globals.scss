@@ -1,0 +1,148 @@
+// Import Bootstrap and customizations
+@import 'bootstrap/scss/bootstrap';
+@import './variables';
+
+// Global styles
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+// Custom utility classes
+.min-vh-100-navbar {
+  min-height: calc(100vh - 56px); // Account for navbar height
+}
+
+// Flight card styles
+.flight-card {
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+}
+
+// Stat card styles
+.stat-card {
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: var(--bs-primary);
+  }
+  
+  &.stat-card-success::before {
+    background: var(--bs-success);
+  }
+  
+  &.stat-card-danger::before {
+    background: var(--bs-danger);
+  }
+  
+  &.stat-card-warning::before {
+    background: var(--bs-warning);
+  }
+}
+
+// Loading skeleton animations
+@keyframes skeleton-loading {
+  0% {
+    background-position: -200px 0;
+  }
+  100% {
+    background-position: calc(200px + 100%) 0;
+  }
+}
+
+.skeleton {
+  display: inline-block;
+  height: 1em;
+  position: relative;
+  overflow: hidden;
+  background-color: #f0f0f0;
+  
+  &::after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    background-image: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.6),
+      transparent
+    );
+    background-repeat: no-repeat;
+    background-size: 200px 100%;
+    animation: skeleton-loading 1.5s ease-in-out infinite;
+  }
+}
+
+// Chart container
+.chart-container {
+  position: relative;
+  height: 300px;
+  width: 100%;
+}
+
+// Dashboard grid
+.dashboard-grid {
+  display: grid;
+  gap: 1.5rem;
+  
+  @include media-breakpoint-up(md) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  @include media-breakpoint-up(lg) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+// Responsive tables
+.table-responsive-stack {
+  @include media-breakpoint-down(md) {
+    display: block;
+    
+    table, thead, tbody, th, td, tr {
+      display: block;
+    }
+    
+    thead tr {
+      position: absolute;
+      top: -9999px;
+      left: -9999px;
+    }
+    
+    tr {
+      border: 1px solid #ccc;
+      margin-bottom: 10px;
+    }
+    
+    td {
+      border: none;
+      position: relative;
+      padding-left: 50%;
+      
+      &:before {
+        position: absolute;
+        top: 6px;
+        left: 6px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+        content: attr(data-label);
+        font-weight: bold;
+      }
+    }
+  }
+}

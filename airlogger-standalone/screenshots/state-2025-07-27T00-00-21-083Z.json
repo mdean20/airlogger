@@ -1,0 +1,31 @@
+{
+  "timestamp": "2025-07-27T00-00-21-083Z",
+  "path": "/Users/mauricedean/Library/CloudStorage/Dropbox/Code/github/airlogger/airlogger-standalone/screenshots/state-2025-07-27T00-00-21-083Z.png",
+  "url": "http://localhost:3010",
+  "viewport": {
+    "width": 1280,
+    "height": 720
+  },
+  "elements": [
+    {
+      "type": "navigation",
+      "selector": "nav",
+      "text": "AirLogger navigation"
+    },
+    {
+      "type": "card",
+      "selector": ".bg-white.rounded-lg.shadow",
+      "count": 4
+    },
+    {
+      "type": "button",
+      "selector": "button",
+      "text": "Refresh Data"
+    },
+    {
+      "type": "chart",
+      "selector": ".progress-bar",
+      "text": "Breakeven Progress"
+    }
+  ]
+}
